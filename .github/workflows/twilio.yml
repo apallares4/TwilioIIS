@@ -1,1 +1,12 @@
+ name: Twilio SMS
+ on: 
+   repository_dispatch:
+     types: [twilio_sms]
 
+ jobs: 
+    incoming_sms:
+      runs-on: ubuntu-latest
+      steps: 
+        - env: 
+           MESSAGE: ${{ github.event.client_payload.message }}
+          run: echo $MESSAGE
